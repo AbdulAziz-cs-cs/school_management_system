@@ -1,0 +1,19 @@
+.container{
+  border-radius: 10px;
+  border-width: 20px;
+  padding: 190px 150px 200px 150px;
+  border-color:purple;
+  
+  align-items: center;
+  text-align: center;
+  width: min-content;
+  background-color:gray;
+  margin-left: 440px;
+  margin-top: 5px;
+
+}
+input{
+  border-color: blueviolet;
+  padding: 30px; 
+
+}

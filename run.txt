@@ -1,0 +1,31 @@
+Step-by-step run instructions (Windows)
+
+1) Open a terminal (PowerShell or CMD) and change to the project folder:
+   cd F:\Desktop\school
+
+2) (Optional but recommended) Create and activate a virtual environment:
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1   # PowerShell
+   # or .\.venv\Scripts\activate.bat   # CMD
+
+3) Install Python dependencies:
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+
+4) Start the backend (run from the backend folder):
+   cd backend
+   uvicorn main:app --reload --host 127.0.0.1 --port 8000
+
+   Note: the FastAPI app mounts the frontend static files from the sibling "frontend" folder. Running the server from the backend folder uses the relative path ../frontend.
+
+5) Open the frontend pages in your browser (they are served by the backend static files):
+   - Student records: http://127.0.0.1:8000/studentrecords.html
+   - Home page: http://127.0.0.1:8000/home.html
+   - Login page: http://127.0.0.1:8000/login.html
+
+6) First run will create a SQLite database file in the backend folder named studentdb.db.
+
+Troubleshooting:
+ - If the server fails to start, check the console for errors. Common issues: missing dependencies, port in use.
+ - If static files don't load, ensure you started uvicorn from the backend folder (so ../frontend resolves correctly).
+ - To change to a different DB (Postgres/MySQL), update backend/db.py and set the correct DATABASE_URL; keep db.py referenced by main.py.

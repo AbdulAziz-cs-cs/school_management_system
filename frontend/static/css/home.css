@@ -1,0 +1,56 @@
+body {
+    text-align: center;
+    color: white    ;
+    margin: 0;
+    font-family: Arial;
+    background-color:darkslategray;
+}
+
+/* FULL LAYOUT */
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+
+
+/* MENU ITEMS */
+.menu-item {
+    background-color: darkgoldenrod;   
+    font-size:medium;
+    font-weight:bolder;
+    font-display:unset;
+    width: 100%;
+    padding: 18px 12px;
+    margin-top: 40px;
+    margin-left: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: start;
+}
+
+
+.menu-item:hover {
+    background:darkolivegreen;
+    color:wheat;
+}
+
+/* MAIN CONTENT */
+.main {
+    
+    flex: 1;
+    margin-right: 6.5%;
+}
+
+
+h1{
+    margin-bottom: 2%;
+    color: lightgreen;
+
+
+}
+.line1{
+    
+    
+    margin-left: 45px;
+}
