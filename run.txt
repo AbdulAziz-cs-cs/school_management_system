@@ -5,7 +5,7 @@ Step-by-step run instructions (Windows)
 
 2) (Optional but recommended) Create and activate a virtual environment:
    python -m venv .venv
-   .\.venv\Scripts\Activate.ps1   # PowerShell
+   .\.venv\Scripts\Activate.   # PowerShell
    # or .\.venv\Scripts\activate.bat   # CMD
 
 3) Install Python dependencies:
@@ -23,7 +23,7 @@ Step-by-step run instructions (Windows)
    - Home page: http://127.0.0.1:8000/home.html
    - Login page: http://127.0.0.1:8000/login.html
 
-6) First run will create a SQLite database file in the backend folder named studentdb.db.
+6) First run will create a SQLite database file in the backend folder nameps1d studentdb.db.
 
 Troubleshooting:
  - If the server fails to start, check the console for errors. Common issues: missing dependencies, port in use.

@@ -144,7 +144,9 @@ def login(request: Request):
 class StudentData(BaseModel):
 
     name: str
+    father_name: str
     dob: str
+    doj: str
 
 
 # --------------------------------------------------
@@ -158,7 +160,9 @@ def add_student(student: StudentData):
 
     new_student = Student(
         name=student.name,
-        dob=student.dob
+        father_name=student.father_name,
+        dob=student.dob,
+        doj=student.doj
     )
 
     db.add(new_student)
@@ -190,7 +194,9 @@ def get_students():
         result.append({
             "id": student.id,
             "name": student.name,
-            "dob": student.dob
+            "father_name": student.father_name,
+            "dob": student.dob,
+            "doj": student.doj,
         })
 
     db.close()

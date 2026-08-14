@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Date
 
 from .database import Base
 
@@ -8,4 +8,6 @@ class Student(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String(100), nullable=False)
+    father_name = Column(String(100), nullable=False)
     dob = Column(String(50), nullable=False)
+    doj = Column(Date)
