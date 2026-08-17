@@ -143,11 +143,12 @@ def login(request: Request):
 
 class StudentData(BaseModel):
 
+    
     name: str
     father_name: str
     dob: str
     doj: str
-
+    adm_no: int 
 
 # --------------------------------------------------
 # ADD STUDENT API
@@ -159,10 +160,13 @@ def add_student(student: StudentData):
     db = SessionLocal()
 
     new_student = Student(
+        adm_no=student.adm_no,
         name=student.name,
         father_name=student.father_name,
         dob=student.dob,
-        doj=student.doj
+        doj=student.doj,
+        
+        
     )
 
     db.add(new_student)
@@ -172,7 +176,8 @@ def add_student(student: StudentData):
 
     return {
         "message": "Student added successfully",
-        "id": new_student.id
+        "id": new_student.id,
+        
     }
 
 
@@ -193,12 +198,29 @@ def get_students():
 
         result.append({
             "id": student.id,
+            
             "name": student.name,
             "father_name": student.father_name,
             "dob": student.dob,
             "doj": student.doj,
+            "adm_no": student.adm_no,
+            
         })
 
     db.close()
 
     return result
+
+
+@app.get("/students/count")
+def get_student_count():
+
+    db = SessionLocal()
+
+    count = db.query(Student).count()
+
+    db.close()
+
+    return {
+        "count": count
+    }

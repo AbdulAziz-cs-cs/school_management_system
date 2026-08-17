@@ -7,22 +7,38 @@
 <body>
      
     <h1>student records</h1>
-    <input type="text" id="name" placeholder="Name">
-    <input type="text" id="father_name" placeholder="Father Name">
-    <input type="date" id="dateofbirth" placeholder="date of birth">
-    <input type="date" id="doj" placeholder="admission date">
-  
+<div class="input-row">
 
-    <button id="adbtn">add student</button>
+    <input type="text" id="name" placeholder="Name">
+
+    <input type="text" id="father_name" placeholder="Father Name">
+
+    <div class="date-input">
+        <span id="dob-label">Date of Birth</span>
+        <input type="date" id="dateofbirth">
+    </div>
+
+    <div class="date-input">
+        <span id="doj-label">Admission Date</span>
+        <input type="date" id="doj">
+    </div>
+
+    <input type="text" id="adm_no" placeholder="Admission No">
+    <button id="adbtn">Add</button>
+
+</div>
 
     <table>
            <tr>
-               <th>student name</th>
-               <th>father name</th>
-               <th>date of birth</th>
-               <th>admission date</th>
+
+               <th>Serial Number</th>
+               <th>Admission No</th>
+               <th>Student name</th>
+               <th>Father name</th>
+               <th>Date of birth</th>
+               <th>Admission date</th>
             
-           </tr>
+            </tr>
              
         <tbody id="tablebody"></tbody> 
     </table>
