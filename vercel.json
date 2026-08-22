@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/main.py",
+      "src": "school_management_system/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "backend/main.py"
+      "dest": "school_management_system/wsgi.py"
     }
   ]
 }
