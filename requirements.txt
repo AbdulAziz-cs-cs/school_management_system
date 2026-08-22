@@ -4,3 +4,4 @@ sqlalchemy
 pydantic
 pymysql
 jinja2
+cryptography
