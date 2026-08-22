@@ -113,14 +113,14 @@ def certificate(request: Request):
 # CERTIFICATE HISTORY PAGE
 # --------------------------------------------------
 
-@app.get("/certificate-history")
-def certificate_history(request: Request):
+# @app.get("/certificate-history")
+# def certificate_history(request: Request):
 
-    return templates.TemplateResponse(
-        request=request,
-        name="certificate_history.html",
-        context={}
-    )
+#     return templates.TemplateResponse(
+#         request=request,
+#         name="certificate_history.html",
+#         context={}
+#     )
 
 
 # --------------------------------------------------
