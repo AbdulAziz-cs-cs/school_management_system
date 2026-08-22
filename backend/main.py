@@ -127,14 +127,14 @@ def certificate_history(request: Request):
 # LOGIN PAGE
 # --------------------------------------------------
 
-@app.get("/signin")
-def login(request: Request):
+# @app.get("/signin")
+# def login(request: Request):
 
-    return templates.TemplateResponse(
-        request=request,
-        name="login.html",
-        context={}
-    )
+#     return templates.TemplateResponse(
+#         request=request,
+#         name="login.html",
+#         context={}
+#     )
 
 
 # --------------------------------------------------
