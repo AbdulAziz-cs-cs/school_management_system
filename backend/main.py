@@ -127,7 +127,7 @@ def certificate_history(request: Request):
 # LOGIN PAGE
 # --------------------------------------------------
 
-@app.get("/login")
+@app.get("/signin")
 def login(request: Request):
 
     return templates.TemplateResponse(
@@ -223,4 +223,30 @@ def get_student_count():
 
     return {
         "count": count
+    }
+
+
+@app.get("/students/by-adm/{adm_no}")
+def get_student_by_adm(adm_no: str):
+
+    db = SessionLocal()
+
+    student = db.query(Student).filter(
+        Student.adm_no == adm_no
+    ).first()
+
+    db.close()
+
+    if not student:
+        return {
+            "message": "Student not found"
+        }
+
+    return {
+        "id": student.id,
+        "adm_no": student.adm_no,
+        "name": student.name,
+        "father_name": student.father_name,
+        "dob": student.dob,
+        "doj": student.doj
     }
