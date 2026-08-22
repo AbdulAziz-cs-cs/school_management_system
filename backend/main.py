@@ -8,7 +8,7 @@ from .database import SessionLocal, engine, Base
 from .models import Student
 
 from pathlib import Path
-
+import os
 
 # --------------------------------------------------
 # PATHS
