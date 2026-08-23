@@ -8,7 +8,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: darkslategray;
-    min-height: 100vh; /* Ensures body goes all the way down */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -25,38 +25,54 @@ body {
 .main {
     flex: 1;
     width: 100%;
-    /* Removed max-width to allow expanding closer to the edges */
-    padding: 15px; /* Creates the small border spaces on all sides */
+    max-width: 95%; /* Expands close to left & right borders */
+    margin: 0 auto;
+    padding: 20px 8px 30px 8px; /* Small side gap, bottom padding */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between; /* Spreads cards evenly down the screen */
+    min-height: calc(100vh - 40px);
 }
 
 h1 {
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
     color: lightgreen;
 }
 
 .line1 {
-    margin: 0 auto 25px auto;
+    margin: 0 auto 15px auto;
+    width: 100%;
 }
 
-/* MENU ITEMS */
+/* MENU ITEMS / CARDS */
 .menu-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: darkgoldenrod;   
-    font-size: 1.1rem; /* Slightly larger text */
-    font-weight: bolder;
-    width: 100%; /* Stretches wide, respecting .main's padding */
-    padding: 20px 15px; /* Taller items */
-    margin-top: 30px; /* Spaced out further down the page */
-    border-radius: 10px;
+    font-size: 1.25rem; /* Larger readable text */
+    font-weight: bold;
+    width: 100%;
+    min-height: 70px; /* Taller touch targets */
+    padding: 18px 24px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
     cursor: pointer;
     text-decoration: underline;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* TARGET ANY ICONS / IMAGES INSIDE MENU ITEMS */
+.menu-item svg,
+.menu-item img,
+.menu-item i {
+    width: 32px !important;  /* Enlarge icon size */
+    height: 32px !important;
+    font-size: 32px !important; /* For font-awesome / material icons */
+    flex-shrink: 0;
 }
 
 .menu-item:hover {
@@ -64,14 +80,24 @@ h1 {
     color: wheat;
 }
 
-/* MOBILE SCREEN OVERRIDES */
+/* MOBILE VIEW (Fills screen nicely with slight side borders) */
 @media (max-width: 600px) {
     .main {
-        padding: 10px; /* Slimmer gaps on mobile edges */
+        max-width: 96%; /* 2% gap on each side */
+        padding: 15px 4px 25px 4px;
     }
 
     .menu-item {
-        padding: 22px 15px; /* Makes targets easier to tap */
-        margin-top: 25px; 
+        min-height: 75px;
+        padding: 16px 20px;
+        font-size: 1.2rem;
+    }
+
+    .menu-item svg,
+    .menu-item img,
+    .menu-item i {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 34px !important;
     }
 }
