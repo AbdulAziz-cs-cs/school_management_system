@@ -8,12 +8,12 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: darkslategray;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures body goes all the way down */
     display: flex;
     flex-direction: column;
 }
 
-/* FULL LAYOUT (Stretches fully to bottom) */
+/* FULL LAYOUT */
 .layout {
     display: flex;
     flex: 1;
@@ -21,40 +21,38 @@ body {
     width: 100%;
 }
 
-/* MAIN CONTENT (Perfect horizontal centering) */
+/* MAIN CONTENT */
 .main {
     flex: 1;
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 24px 16px;
+    /* Removed max-width to allow expanding closer to the edges */
+    padding: 15px; /* Creates the small border spaces on all sides */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 25px;
     color: lightgreen;
 }
 
 .line1 {
-    margin: 0 auto 20px auto;
+    margin: 0 auto 25px auto;
 }
 
-/* MENU ITEMS (Centered, no side margins pushing right) */
+/* MENU ITEMS */
 .menu-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: darkgoldenrod;   
-    font-size: medium;
+    font-size: 1.1rem; /* Slightly larger text */
     font-weight: bolder;
-    width: 100%;
-    padding: 16px 20px;
-    margin-top: 20px;
-    margin-left: 0;
-    margin-right: 0;
+    width: 100%; /* Stretches wide, respecting .main's padding */
+    padding: 20px 15px; /* Taller items */
+    margin-top: 30px; /* Spaced out further down the page */
     border-radius: 10px;
     cursor: pointer;
     text-decoration: underline;
@@ -66,14 +64,14 @@ h1 {
     color: wheat;
 }
 
-/* MOBILE SCREEN ADJUSTMENTS */
+/* MOBILE SCREEN OVERRIDES */
 @media (max-width: 600px) {
     .main {
-        padding: 16px 14px;
+        padding: 10px; /* Slimmer gaps on mobile edges */
     }
 
     .menu-item {
-        padding: 14px 16px;
-        margin-top: 14px;
+        padding: 22px 15px; /* Makes targets easier to tap */
+        margin-top: 25px; 
     }
 }
