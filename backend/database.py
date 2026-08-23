@@ -1,24 +1,34 @@
 import os
-import ssl
+import certifi
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "mysql+pymysql://root:@localhost:3306/gps_shingrai"
+)
 
 connect_args = {}
+
+# Use certifi CA bundle when connecting to TiDB Cloud
 if DATABASE_URL and "tidbcloud.com" in DATABASE_URL:
-    # Build standard SSL context for TiDB Serverless TLS
-    ctx = ssl.create_default_context()
-    ctx.check_hostname = True
-    ctx.verify_mode = ssl.CERT_REQUIRED
-    connect_args = {"ssl": ctx}
+    connect_args = {
+        "ssl": {
+            "ca": certifi.where()
+        }
+    }
 
 engine = create_engine(
-    DATABASE_URL or "sqlite:///:memory:",
+    DATABASE_URL,
     connect_args=connect_args,
     pool_pre_ping=True,
     pool_recycle=300
 )
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
 Base = declarative_base()
