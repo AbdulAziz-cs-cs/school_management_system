@@ -8,17 +8,16 @@ from .database import SessionLocal, engine, Base
 from .models import Student
 
 from pathlib import Path
-import os
+
 
 # --------------------------------------------------
 # PATHS
 # --------------------------------------------------
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = path(__file__).resolve().parent.parent
 
-TEMPLATES_DIR = os.path.join(BASE_DIR , "frontend" , "templates")
+TEMPLATES_DIR = BASE_DIR / "frontend" / "templates"
 STATIC_DIR = BASE_DIR / "frontend" / "static"
-
 
 # --------------------------------------------------
 # FASTAPI APP

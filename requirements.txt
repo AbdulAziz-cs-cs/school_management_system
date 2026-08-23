@@ -6,4 +6,3 @@ pymysql
 jinja2
 cryptography
 certifi
-mangum
