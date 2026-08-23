@@ -30,9 +30,13 @@ app = FastAPI()
 # DATABASE
 # --------------------------------------------------
 
-Base.metadata.create_all(bind=engine)
-
-
+@app.on_event("startup")
+def init_db():
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("Database connected and tables initialized.")
+    except Exception as e:
+        print(f"Warning during DB init: {e}")
 # --------------------------------------------------
 # STATIC FILES
 # --------------------------------------------------
