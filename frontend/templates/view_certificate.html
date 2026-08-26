@@ -2,36 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GPS Shingrai — Certificate Preview</title>
     <link rel="stylesheet" href="/static/css/view_certificate.css">
     
-    <!-- html2canvas for gallery export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <div class="page-header">
+    <a href="/" id="backHomeBtn" class="btn-home" data-html2canvas-ignore="true">Home</a>
+
+    <div class="page-header" data-html2canvas-ignore="true">
         <h1>Certificate Preview</h1>
         <p>Government Primary School Shingrai</p>
-        <button id="backhome">Home</button>
     </div>
 
-    <!-- Printable Certificate Area -->
-    <div class="certificate-wrapper" id="certificateCard">
-        <!-- Certificate Template Image -->
-        <img src="/static/assets/images/Certificate.jpg" alt="GPS Shingrai Certificate" class="cert-background">
+    <div class="cert-scaler-wrapper">
+        <div class="certificate-wrapper" id="certificateCard">
+            <img src="/static/assets/images/Certificate.jpg" alt="GPS Shingrai Certificate" class="cert-background">
 
-        <!-- Positioned Text Overlays -->
-        <div class="cert-field cert-name" id="certName">---</div>
-        <div class="cert-field cert-father" id="certFather">---</div>
-        <div class="cert-field cert-doj" id="certDoj">---</div>
-        <div class="cert-field cert-adm-no" id="certAdmNo">---</div>
-        <div class="cert-field cert-date" id="certIssueDate">--/--/----</div>
+            <div class="cert-field cert-name" id="certName">---</div>
+            <div class="cert-field cert-father" id="certFather">---</div>
+            <div class="cert-field cert-doj" id="certDoj">---</div>
+            <div class="cert-field cert-adm-no" id="certAdmNo">---</div>
+            <div class="cert-field cert-date" id="certIssueDate">--/--/----</div>
+        </div>
     </div>
 
-    <!-- Controls -->
-    <div class="action-controls">
+    <div class="action-controls" data-html2canvas-ignore="true">
         <a href="/certificate" class="btn-back">&larr; Back to Search</a>
         <button id="savebtn" class="btn-save" type="button">Save to Gallery</button>
     </div>
