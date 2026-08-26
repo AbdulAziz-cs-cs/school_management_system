@@ -1,51 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GPS SHINGRAI</title>
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
 <body>
 
     <div class="layout">
-    
+        <main class="main">
+            <h1>G P S Shingrai</h1>
+            <hr class="line1">
 
-    <!-- MAIN CONTENT -->
-        <div class="main">
-             <h1>G P S Shingrai</h1>
             <div class="dashboard">
-                <hr class="line1">
-                <hr class="line1">
-            
-            <div>
-                <button class="menu-item" id="stdrecords"> students records
-         
-                 <!-- <p>Total = <span id="student-count">0</span></p> -->
-                 
-               
+                <button class="menu-item" id="stdrecords" type="button">
+                    Students Records
                 </button>
-                
-            </div>  
 
-             
-             <div>
-                <button class="menu-item" id="certificatecreation" > create certificate</button>
-             </div>
-             
-             <div>
-                <button class="menu-item" id="history" >certification history</button>
-             </div>
-             
-             <div>
-                <button class="menu-item" id="signin" >sign in</button>
-             </div>
-             
-            
-             
-          </div>
+                <button class="menu-item" id="certificatecreation" type="button">
+                    Create Certificate
+                </button>
+
+                <button class="menu-item" id="history" type="button">
+                    Certification History
+                </button>
+
+                <button class="menu-item" id="signin" type="button">
+                    Sign In
+                </button>
+            </div>
+        </main>
     </div>
-<script src="/static/js/home.js"></script>
+
+    <script src="/static/js/home.js"></script>
 </body>
 </html>

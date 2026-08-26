@@ -1,103 +1,128 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     text-align: center;
     color: white;
-    margin: 0;
     font-family: Arial, sans-serif;
     background-color: darkslategray;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 12px;
 }
 
-/* FULL LAYOUT */
+/* FULL LAYOUT CONTAINER */
 .layout {
-    display: flex;
-    flex: 1;
-    min-height: 100vh;
     width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
 }
 
 /* MAIN CONTENT */
 .main {
-    flex: 1;
     width: 100%;
-    max-width: 95%; /* Expands close to left & right borders */
-    margin: 0 auto;
-    padding: 20px 8px 30px 8px; /* Small side gap, bottom padding */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Spreads cards evenly down the screen */
-    min-height: calc(100vh - 40px);
+    align-items: center;
 }
 
 h1 {
-    margin-top: 5px;
-    margin-bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: 8px;
     font-size: 1.8rem;
     color: lightgreen;
+    letter-spacing: 0.5px;
 }
 
 .line1 {
-    margin: 0 auto 15px auto;
+    margin: 0 auto 20px auto;
     width: 100%;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-/* MENU ITEMS / CARDS */
+.dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* MENU ITEMS / BUTTONS */
 .menu-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: darkgoldenrod;   
-    font-size: 1.25rem; /* Larger readable text */
+    color: white;
+    font-size: 1.15rem;
     font-weight: bold;
+    text-transform: capitalize;
     width: 100%;
-    min-height: 70px; /* Taller touch targets */
-    padding: 18px 24px;
-    margin-top: 35px;
-    margin-bottom: 10px;
+    min-height: 60px;
+    padding: 14px 20px;
+    border: none;
+    outline: none;
     border-radius: 12px;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     transition: background-color 0.2s ease, transform 0.1s ease;
+    touch-action: manipulation;
 }
 
-/* TARGET ANY ICONS / IMAGES INSIDE MENU ITEMS */
+/* TARGET ICONS OR IMAGES IF ADDED INSIDE BUTTONS */
 .menu-item svg,
 .menu-item img,
 .menu-item i {
-    width: 32px !important;  /* Enlarge icon size */
-    height: 32px !important;
-    font-size: 32px !important; /* For font-awesome / material icons */
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 28px !important;
     flex-shrink: 0;
+    margin-right: 12px;
 }
 
 .menu-item:hover {
-    background: darkolivegreen;
+    background-color: darkolivegreen;
     color: wheat;
 }
 
-/* MOBILE VIEW (Fills screen nicely with slight side borders) */
+.menu-item:active {
+    transform: scale(0.98);
+}
+
+/* ================= MOBILE VIEW (< 600px) ================= */
 @media (max-width: 600px) {
-    .main {
-        max-width: 96%; /* 2% gap on each side */
-        padding: 15px 4px 25px 4px;
+    body {
+        padding: 24px 12px;
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .dashboard {
+        gap: 14px;
     }
 
     .menu-item {
-        min-height: 75px;
-        padding: 16px 20px;
-        font-size: 1.2rem;
+        min-height: 56px;
+        font-size: 1.05rem;
+        padding: 12px 16px;
     }
 
     .menu-item svg,
     .menu-item img,
     .menu-item i {
-        width: 34px !important;
-        height: 34px !important;
-        font-size: 34px !important;
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 24px !important;
     }
 }
