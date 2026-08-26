@@ -1,32 +1,83 @@
-document.getElementById("searchbtn").addEventListener("click", async function () {
+// Inside /static/js/create_certificate.js
 
-    let adm_no = document.getElementById("adm_no").value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBtn = document.getElementById("searchbtn");
+  const admInput = document.getElementById("adm_no");
+  const studentNameInput = document.getElementById("student_name");
+  const fatherNameInput = document.getElementById("father_name");
+  const dobInput = document.getElementById("dob");
+  const dojInput = document.getElementById("doj");
+  const nextBtn = document.getElementById("nextBtn");
 
-    if (adm_no === "") {
-        alert("Please enter Admission No");
-        return;
+  // --- 1. Search & Autofill ---
+  async function searchStudent() {
+    const admNo = admInput.value.trim();
+    if (!admNo) {
+      alert("Please enter an admission number.");
+      return;
     }
 
     try {
+      const response = await fetch(`/students/by-adm/${encodeURIComponent(admNo)}`);
+      if (!response.ok) throw new Error("Student not found.");
 
-        let response = await fetch(`/students/by-adm/${adm_no}`);
+      const data = await response.json();
 
-        let data = await response.json();
+      if (data.message && data.message === "Student not found") {
+        alert("Student not found for Admission No: " + admNo);
+        studentNameInput.value = "";
+        fatherNameInput.value = "";
+        dobInput.value = "";
+        dojInput.value = "";
+        return;
+      }
 
-        if (!response.ok || data.message === "Student not found") {
-            alert("Student not found");
-            return;
-        }
-
-        document.getElementById("student_name").value = data.name;
-        document.getElementById("father_name").value = data.father_name;
-        document.getElementById("dob").value = data.dob;
-        document.getElementById("doj").value = data.doj;
-
-    } catch (error) {
-
-        console.error("Error retrieving student:", error);
-        alert("Unable to retrieve student data");
-
+      studentNameInput.value = data.name || "";
+      fatherNameInput.value = data.father_name || "";
+      dobInput.value = data.dob || "";
+      dojInput.value = data.doj || "";
+    } catch (err) {
+      console.error("Autofill Error:", err);
+      alert("Failed to fetch student details.");
     }
+  }
+
+  if (searchBtn) searchBtn.addEventListener("click", searchStudent);
+  if (admInput) {
+    admInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        searchStudent();
+      }
+    });
+  }
+
+  // --- 2. Save to sessionStorage and Navigate ---
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const name = studentNameInput.value.trim();
+      const father = fatherNameInput.value.trim();
+      const adm = admInput.value.trim();
+      const dob = dobInput.value.trim();
+      const doj = dojInput.value.trim();
+
+      if (!name) {
+        alert("Please search and load a student first before proceeding.");
+        return;
+      }
+
+      // Store student details as a JSON string
+      const studentPayload = {
+        adm_no: adm,
+        name: name,
+        father: father,
+        dob: dob,
+        doj: doj
+      };
+      sessionStorage.setItem("current_student_certificate", JSON.stringify(studentPayload));
+
+      // Clean redirect (no query parameters in URL)
+      window.location.href = "/view-certificate";
+    });
+  }
 });

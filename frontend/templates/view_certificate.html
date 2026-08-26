@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Shingrai — Certificate Preview</title>
+    <link rel="stylesheet" href="/static/css/view_certificate.css">
+    
+    <!-- html2canvas for gallery export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="page-header">
+        <h1>Certificate Preview</h1>
+        <p>Government Primary School Shingrai</p>
+        <button id="backhome">Home</button>
+    </div>
+
+    <!-- Printable Certificate Area -->
+    <div class="certificate-wrapper" id="certificateCard">
+        <!-- Certificate Template Image -->
+        <img src="/static/assets/images/Certificate.jpg" alt="GPS Shingrai Certificate" class="cert-background">
+
+        <!-- Positioned Text Overlays -->
+        <div class="cert-field cert-name" id="certName">---</div>
+        <div class="cert-field cert-father" id="certFather">---</div>
+        <div class="cert-field cert-doj" id="certDoj">---</div>
+        <div class="cert-field cert-adm-no" id="certAdmNo">---</div>
+        <div class="cert-field cert-date" id="certIssueDate">--/--/----</div>
+    </div>
+
+    <!-- Controls -->
+    <div class="action-controls">
+        <a href="/certificate" class="btn-back">&larr; Back to Search</a>
+        <button id="savebtn" class="btn-save" type="button">Save to Gallery</button>
+    </div>
+
+    <script src="/static/js/view_certificate.js"></script>
+</body>
+</html>

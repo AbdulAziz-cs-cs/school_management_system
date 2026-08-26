@@ -111,6 +111,15 @@ def certificate(request: Request):
         context={}
     )
 
+#certificate preview page
+
+@app.get("/view-certificate")
+def view_certificate_page(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="view_certificate.html",
+        context={}
+    )
 
 # --------------------------------------------------
 # CERTIFICATE HISTORY PAGE

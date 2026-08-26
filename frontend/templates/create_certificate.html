@@ -1,45 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Create Certificate</title>
+    <title>Create Certificate — Student Verification</title>
     <link rel="stylesheet" href="/static/css/create_certificate.css">
 </head>
-
 <body>
 
-    <h1>Create Certificate</h1>
+    <div class="form-container">
+        <h2>Student Certificate Verification</h2>
+        <p class="subtitle">Search student by admission number to auto-fill details.</p>
 
-    <div class="certificate-container">
-
-        <h2>Student Certificate</h2>
-
-        <div class="search-section">
+        <div class="search-box">
             <input type="text" id="adm_no" placeholder="Enter Admission No">
-            <button id="searchbtn">Search</button>
+            <button id="searchbtn" type="button">Search</button>
         </div>
 
-        <div class="student-info">
+        <form class="student-form" onsubmit="return false;">
+            <div class="form-group">
+                <label for="student_name">Student Name</label>
+                <input type="text" id="student_name" readonly placeholder="Auto-filled name">
+            </div>
 
-            <label>Student Name</label>
-            <input type="text" id="student_name" readonly>
+            <div class="form-group">
+                <label for="father_name">Father Name</label>
+                <input type="text" id="father_name" readonly placeholder="Auto-filled father name">
+            </div>
 
-            <label>Father Name</label>
-            <input type="text" id="father_name" readonly>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="text" id="dob" readonly placeholder="DD-MM-YYYY">
+            </div>
 
-            <label>Date of Birth</label>
-            <input type="text" id="dob" readonly>
+            <div class="form-group">
+                <label for="doj">Admission Date</label>
+                <input type="text" id="doj" readonly placeholder="DD-MM-YYYY">
+            </div>
 
-            <label>Admission Date</label>
-            <input type="text" id="doj" readonly>
-
-        </div>
-
-        <button id="generatebtn">Generate Certificate</button>
-
+            <div class="action-footer">
+                <button id="nextBtn" class="btn-primary" type="button">
+                    Next: View Certificate &rarr;
+                </button>
+            </div>
+        </form>
     </div>
-  <script src="/static/js/create_certificate.js"></script>
+
+    <script src="/static/js/create_certificate.js"></script>
 </body>
 </html>
