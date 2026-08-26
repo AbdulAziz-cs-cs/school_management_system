@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
-    "mysql+pymysql://root:@localhost:3306/gps_shingrai"
+    "mysql+pymysql://bfs8fJyKGvC8ftk.root:zo4HXAaz0Ew29arw@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/school_db?ssl_verify_cert=true&ssl_verify_identity=true"
 )
 
 connect_args = {}
