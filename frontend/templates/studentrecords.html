@@ -1,53 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta charset="UTF-8">
     <title>student records</title>
     <link rel="stylesheet" href="/static/css/studentrecords.css">
 </head>
 <body>
-     
+    
     <h1>student records</h1>
-<div class="input-row">
 
-    <input type="text" id="name" placeholder="Name">
+    <div class="input-row">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="father_name" placeholder="Father Name">
 
-    <input type="text" id="father_name" placeholder="Father Name">
+        <div class="date-input">
+            <span id="dob-label">Date of Birth</span>
+            <input type="date" id="dateofbirth">
+        </div>
 
-    <div class="date-input">
-        <span id="dob-label">Date of Birth</span>
-        <input type="date" id="dateofbirth">
+        <div class="date-input">
+            <span id="doj-label">Admission Date</span>
+            <input type="date" id="doj">
+        </div>
+
+        <input type="text" id="adm_no" placeholder="Admission No">
+        <button id="adbtn" type="button">Add</button>
     </div>
 
-    <div class="date-input">
-        <span id="doj-label">Admission Date</span>
-        <input type="date" id="doj">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Admission No</th>
+                    <th>Student name</th>
+                    <th>Father name</th>
+                    <th>Date of birth</th>
+                    <th>Admission date</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody"></tbody> 
+        </table>
     </div>
-
-    <input type="text" id="adm_no" placeholder="Admission No">
-    <button id="adbtn">Add</button>
-
-</div>
-
-    <table>
-           <tr>
-
-               <th>Serial Number</th>
-               <th>Admission No</th>
-               <th>Student name</th>
-               <th>Father name</th>
-               <th>Date of birth</th>
-               <th>Admission date</th>
-            
-            </tr>
-             
-        <tbody id="tablebody"></tbody> 
-    </table>
-     
 
     <script src="/static/js/studentrecords.js"></script>
-
 </body>
 </html>

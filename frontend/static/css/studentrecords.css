@@ -1,26 +1,44 @@
-.topbar{
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.topbar {
     background-color: blue;
     /* color: aliceblue; */
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
-table{
-    width:100%;
-    border-collapse: collapse;
-
+/* ================= TABLE DESKTOP ================= */
+.table-container {
+    width: 100%;
+    margin-top: 15px;
 }
-th, td{
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
     border: 1px solid black;
     padding: 11px;
-
+    text-align: left;
 }
-th{
+
+th {
     color: maroon;
 }
 
+/* ================= INPUTS & BUTTONS DESKTOP ================= */
 input {
     color: black;
     width: 170px;
@@ -28,13 +46,11 @@ input {
     padding: 5px 12px;
     margin: 1px;
     font-size: 17px;
-    font-weight:bold;
+    font-weight: bold;
     box-sizing: border-box;
-    
 }
 
 button {
-    
     color: white;
     background-color: green;
     width: 100px;
@@ -44,18 +60,20 @@ button {
     font-weight: bold;
     font-size: 17px;
     box-sizing: border-box;
-    align-items: left;       
-}
-button:hover{
-    background-color: darkgreen;
     cursor: pointer;
+    border: none;
 }
+
+button:hover {
+    background-color: darkgreen;
+}
+
 .input-row {
     color: black;
     display: flex;
     align-items: center;
     gap: 11px;
-    margin: 0px 0px 0px;
+    margin: 0px 0px 10px 0px;
 }
 
 .input-row > input {
@@ -64,7 +82,6 @@ button:hover{
     height: 30px;
     box-sizing: border-box;
     padding: 5px 2px;
-    
 }
 
 .date-input {
@@ -83,7 +100,7 @@ button:hover{
 }
 
 .date-input span {
-    color: gray ;
+    color: gray;
     position: absolute;
     right: 15px;
     top: 60%;
@@ -102,4 +119,49 @@ button:hover{
 
 .date-input input.has-value::-webkit-datetime-edit {
     color: black;
+}
+
+/* ================= MOBILE VIEW (UNDER 900PX) ================= */
+@media (max-width: 900px) {
+    body {
+        padding: 8px;
+    }
+
+    /* Stack inputs neatly into a responsive vertical form */
+    .input-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .input-row > input,
+    .date-input,
+    .date-input input,
+    button {
+        width: 100% !important;
+        height: 40px; /* Slightly taller for easy finger tapping */
+        margin: 0;
+    }
+
+    .date-input span {
+        top: 50%;
+        font-size: 15px;
+    }
+
+    /* Enables horizontal swipe for the table so columns stay readable */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 15px;
+    }
+
+    table {
+        min-width: 650px; /* Prevents text crowding on small phones */
+    }
+
+    th, td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
 }
