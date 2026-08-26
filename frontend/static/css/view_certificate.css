@@ -7,71 +7,65 @@
 }
 
 body {
-    background-color: #1e293b;
-    padding: 20px 10px;
+    background-color: #1a273a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    justify-content: flex-start;
+    padding: 12px 10px 24px 10px;
     overflow-x: hidden;
 }
 
-/* Home Button */
-#backHomeBtn {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 1000;
+/* ================= TOP NAVBAR ================= */
+.top-nav {
+    width: 100%;
+    max-width: 595px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 4px;
+}
+
+.school-title {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.btn-home {
     background-color: #2563eb;
     color: #ffffff;
     padding: 8px 18px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: background 0.2s;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
 }
 
-#backHomeBtn:hover {
+.btn-home:hover {
     background-color: #1d4ed8;
 }
 
-/* Page Header */
-.page-header {
-    text-align: center;
-    color: #ffffff;
-    margin-top: 25px;
-    margin-bottom: 20px;
-}
-
-.page-header h1 {
-    font-size: 1.6rem;
-    margin-bottom: 4px;
-}
-
-.page-header p {
-    color: #cbd5e1;
-    font-size: 0.9rem;
-}
-
-/* ================= CERTIFICATE CONTAINER (DESKTOP) ================= */
-.cert-scaler-wrapper {
+/* ================= CERTIFICATE AREA ================= */
+.cert-area {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin-bottom: 16px;
 }
 
+/* Desktop sizing (Native A4 ratio: 595px x 842px) */
 .certificate-wrapper {
     position: relative;
     width: 595px;
     height: 842px;
-    background-color: #fcefe3;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    background-color: #fdf5ea;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     overflow: hidden;
-    transform-origin: top center;
 }
 
 .cert-background {
@@ -84,138 +78,118 @@ body {
     object-fit: fill;
 }
 
-/* Base style for student dynamic data */
+/* Dynamic Text Fields */
 .cert-field {
     position: absolute;
     z-index: 2;
     font-family: 'Times New Roman', Georgia, serif;
-    color: #3b2314;
+    color: #2e1708;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     white-space: nowrap;
 }
 
-/* Exact Coordinates matching your GPS Shingrai Certificate */
+/* Coordinate Calibration on Template Lines */
 .cert-name {
-    top: 54.2%;
-    left: 19%;
-    width: 135px;
+    top: 54.1%;
+    left: 17%;
+    width: 25%;
     text-align: center;
 }
 
 .cert-father {
-    top: 54.2%;
-    left: 64%;
-    width: 145px;
+    top: 54.1%;
+    left: 58%;
+    width: 29%;
     text-align: center;
 }
 
 .cert-doj {
     top: 59.8%;
     left: 36%;
-    width: 145px;
+    width: 25%;
     text-align: center;
 }
 
 .cert-adm-no {
     top: 65.5%;
     left: 35%;
-    width: 145px;
+    width: 25%;
     text-align: center;
 }
 
 .cert-date {
     top: 85%;
-    left: 31.5%;
-    font-size: 1rem;
-    font-weight: bold;
+    left: 32%;
+    font-size: 1.05rem;
 }
 
-/* Bottom Action Buttons */
+/* ================= BOTTOM BUTTONS ================= */
 .action-controls {
-    margin: 25px 0 35px 0;
+    width: 100%;
+    max-width: 595px;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .btn-back {
     text-decoration: none;
-    background-color: #475569;
+    background-color: #3b4b61;
     color: #ffffff;
-    padding: 10px 22px;
-    border-radius: 6px;
+    padding: 13px;
+    border-radius: 8px;
     font-weight: 600;
-    transition: 0.2s;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.2s;
 }
 
 .btn-back:hover {
-    background-color: #64748b;
+    background-color: #4a5d78;
 }
 
 .btn-save {
-    background-color: #16a34a;
+    background-color: #15803d;
     color: #ffffff;
     border: none;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 600;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
+    text-align: center;
+    transition: background-color 0.2s;
 }
 
 .btn-save:hover {
-    background-color: #15803d;
+    background-color: #166534;
 }
 
-/* ================= MOBILE RESPONSIVE SCALING ================= */
-
-/* Small Tablets / Large Phones (< 640px) */
-@media (max-width: 640px) {
-    .cert-scaler-wrapper {
-        height: 680px; /* Adjust wrapper height to accommodate scaled element */
+/* ================= MOBILE VIEW (SCREENS UNDER 600PX) ================= */
+@media (max-width: 600px) {
+    body {
+        padding: 10px 8px 20px 8px;
     }
 
+    /* Expand certificate to fill phone width with small side gaps */
     .certificate-wrapper {
-        transform: scale(0.8); /* Scales 595px down to ~476px */
-    }
-}
-
-/* Standard Mobile Screens (< 480px) */
-@media (max-width: 480px) {
-    .cert-scaler-wrapper {
-        height: 520px;
+        width: calc(100vw - 16px);
+        height: auto;
+        aspect-ratio: 595 / 842; /* Keeps image proportions identical */
+        border-radius: 4px;
     }
 
-    .certificate-wrapper {
-        transform: scale(0.6); /* Scales 595px down to ~357px */
+    /* Proportional font sizing for smaller screens */
+    .cert-field {
+        font-size: clamp(0.72rem, 3.2vw, 1.1rem);
     }
 
-    .page-header h1 {
-        font-size: 1.35rem;
+    .cert-date {
+        font-size: clamp(0.68rem, 3vw, 1rem);
     }
 
     .action-controls {
-        flex-direction: column;
-        width: 90%;
-        max-width: 320px;
-        gap: 10px;
-    }
-
-    .btn-back, .btn-save {
-        text-align: center;
-        width: 100%;
-        padding: 12px;
-    }
-}
-
-/* Very Small Mobile Screens (< 380px) */
-@media (max-width: 380px) {
-    .cert-scaler-wrapper {
-        height: 440px;
-    }
-
-    .certificate-wrapper {
-        transform: scale(0.5); /* Scales down to 297px */
+        width: calc(100vw - 16px);
     }
 }

@@ -6,33 +6,37 @@
     <title>GPS Shingrai — Certificate Preview</title>
     <link rel="stylesheet" href="/static/css/view_certificate.css">
     
+    <!-- html2canvas for high-res save -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <a href="/" id="backHomeBtn" class="btn-home" data-html2canvas-ignore="true">Home</a>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav" data-html2canvas-ignore="true">
+        <div class="school-title">GPS Shingrai</div>
+        <a href="/" id="backHomeBtn" class="btn-home">Home</a>
+    </header>
 
-    <div class="page-header" data-html2canvas-ignore="true">
-        <h1>Certificate Preview</h1>
-        <p>Government Primary School Shingrai</p>
-    </div>
-
-    <div class="cert-scaler-wrapper">
+    <!-- Certificate Container -->
+    <main class="cert-area">
         <div class="certificate-wrapper" id="certificateCard">
-            <img src="/static/assets/images/Certificate.jpg" alt="GPS Shingrai Certificate" class="cert-background">
+            <!-- Background Image -->
+            <img src="/static/assets/images/Certificate.jpg" alt="Certificate" class="cert-background">
 
+            <!-- Precise Overlay Fields -->
             <div class="cert-field cert-name" id="certName">---</div>
             <div class="cert-field cert-father" id="certFather">---</div>
             <div class="cert-field cert-doj" id="certDoj">---</div>
             <div class="cert-field cert-adm-no" id="certAdmNo">---</div>
             <div class="cert-field cert-date" id="certIssueDate">--/--/----</div>
         </div>
-    </div>
+    </main>
 
-    <div class="action-controls" data-html2canvas-ignore="true">
+    <!-- Bottom Action Controls -->
+    <footer class="action-controls" data-html2canvas-ignore="true">
         <a href="/certificate" class="btn-back">&larr; Back to Search</a>
         <button id="savebtn" class="btn-save" type="button">Save to Gallery</button>
-    </div>
+    </footer>
 
     <script src="/static/js/view_certificate.js"></script>
 </body>
