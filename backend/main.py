@@ -78,7 +78,7 @@ app.add_middleware(
 
 # 1. Define your hardcoded credentials
 VALID_USERNAME = "admin"
-VALID_PASSWORD = "admin123"
+VALID_PASSWORD = "admin###"
 
 # Request schema
 class LoginRequest(BaseModel):
