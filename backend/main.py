@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, status, Request
+from fastapi.responses import FileResponse
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -74,7 +76,38 @@ app.add_middleware(
 # HOME PAGE
 # --------------------------------------------------
 
+# 1. Define your hardcoded credentials
+VALID_USERNAME = "admin"
+VALID_PASSWORD = "admin123"
+
+# Request schema
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
 @app.get("/")
+def login(request: Request):
+
+    return templates.TemplateResponse(
+        request=request,
+        name="login.html",
+        context={}
+    )
+
+
+    # 4. Authentication API endpoint
+@app.post("/api/login")
+def login(creds: LoginRequest):
+    if creds.username == VALID_USERNAME and creds.password == VALID_PASSWORD:
+        return {"status": "success", "token": "logged_in_secret_key"}
+    
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid username or password"
+    )
+
+
+@app.get("/home.html")
 def home(request: Request):
 
     return templates.TemplateResponse(
@@ -139,7 +172,7 @@ def view_certificate_page(request: Request):
 # LOGIN PAGE
 # --------------------------------------------------
 
-# @app.get("/signin")
+# @app.get("/login")
 # def login(request: Request):
 
 #     return templates.TemplateResponse(
