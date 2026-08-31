@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
-    <title>student records</title>
+    <title>Student Records</title>
+
+    <!-- AUTH GUARD -->
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "/login.html";
+        }
+    </script>
+
     <link rel="stylesheet" href="/static/css/studentrecords.css">
 </head>
 <body>
@@ -13,6 +21,12 @@
     <div class="input-row">
         <input type="text" id="name" placeholder="Name">
         <input type="text" id="father_name" placeholder="Father Name">
+
+        <!-- GENDER SELECTOR -->
+        <select id="gender" class="custom-select">
+            <option value="Male" selected>Male</option>
+            <option value="Female">Female</option>
+        </select>
 
         <div class="date-input">
             <span id="dob-label">Date of Birth</span>
@@ -35,6 +49,7 @@
                     <th>Serial Number</th>
                     <th>Admission No</th>
                     <th>Student name</th>
+                    <th>Gender</th>
                     <th>Father name</th>
                     <th>Date of birth</th>
                     <th>Admission date</th>

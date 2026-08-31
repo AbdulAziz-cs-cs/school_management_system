@@ -6,9 +6,12 @@ document.getElementById("adbtn").addEventListener("click", addstudent);
 async function addstudent() {
     let adm_no = document.getElementById("adm_no").value;
     let name = document.getElementById("name").value;
+    
     let father_name = document.getElementById("father_name").value;
+     let gender = document.getElementById("gender").value;
     let dob = document.getElementById("dateofbirth").value;
     let doj = document.getElementById("doj").value;
+     
 
     if (name === "" || father_name === "" || dob === "" || doj === "" || adm_no === "") {
         alert("Please fill in all fields");
@@ -18,9 +21,11 @@ async function addstudent() {
     let student = {
         name: name,
         father_name: father_name,
+        gender: gender,
         dob: dob,
         doj: doj,
         adm_no: adm_no, 
+        
     };
 
     let response = await fetch("/students", {
@@ -39,17 +44,21 @@ async function addstudent() {
             adm_no: adm_no,
             name: name,
             father_name: father_name,
+            gender: gender,
             dob: dob,
             doj: doj,
+            
         });
 
         renderTable();
 
         document.getElementById("name").value = "";
         document.getElementById("father_name").value = "";
+         document.getElementById("gender").value = "";
         document.getElementById("dateofbirth").value = "";
         document.getElementById("doj").value = "";
         document.getElementById("adm_no").value = "";
+       
 
         // Reset date placeholder labels
         dateInputs.forEach(item => {
@@ -76,9 +85,12 @@ function renderTable() {
                 <td>${index + 1}</td>
                 <td>${student.adm_no}</td>
                 <td>${student.name ? student.name.toUpperCase() : ''}</td>
+                <td>${student.gender || ''}</td>
                 <td>${student.father_name ? student.father_name.toUpperCase() : ''}</td>
+                
                 <td>${student.dob || ''}</td>
                 <td>${student.doj || ''}</td>
+               
             </tr>
         `;
     });
@@ -107,6 +119,7 @@ const dateInputs = [
     {
         input: document.getElementById("doj"),
         label: document.getElementById("doj-label")
+        
     }
 ];
 

@@ -13,3 +13,4 @@ class Student(Base):
     dob = Column(String(50), nullable=False)
     doj = Column(Date)
     adm_no = Column(Integer, unique=True)
+    gender = Column(String(10), nullable=False, default="Male")

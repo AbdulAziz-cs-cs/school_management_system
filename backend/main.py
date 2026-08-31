@@ -167,21 +167,6 @@ def view_certificate_page(request: Request):
 #         context={}
 #     )
 
-
-# --------------------------------------------------
-# LOGIN PAGE
-# --------------------------------------------------
-
-# @app.get("/login")
-# def login(request: Request):
-
-#     return templates.TemplateResponse(
-#         request=request,
-#         name="login.html",
-#         context={}
-#     )
-
-
 # --------------------------------------------------
 # PYDANTIC MODEL
 # --------------------------------------------------
@@ -193,7 +178,8 @@ class StudentData(BaseModel):
     father_name: str
     dob: str
     doj: str
-    adm_no: int 
+    adm_no: int
+    gender: str 
 
 # --------------------------------------------------
 # ADD STUDENT API
@@ -210,7 +196,7 @@ def add_student(student: StudentData):
         father_name=student.father_name,
         dob=student.dob,
         doj=student.doj,
-        
+        gender=student.gender,
         
     )
 
@@ -249,6 +235,7 @@ def get_students():
             "dob": student.dob,
             "doj": student.doj,
             "adm_no": student.adm_no,
+            "gender": student.gender,
             
         })
 
@@ -293,5 +280,6 @@ def get_student_by_adm(adm_no: str):
         "name": student.name,
         "father_name": student.father_name,
         "dob": student.dob,
-        "doj": student.doj
+        "doj": student.doj,
+        "gender": student.gender
     }
