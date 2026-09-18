@@ -292,6 +292,29 @@ def update_student(student_id: int, student: StudentUpdateData):
     }
 
 
+@app.delete("/students/{student_id}")
+def delete_student(student_id: int):
+
+    db = SessionLocal()
+
+    existing_student = db.query(Student).filter(Student.id == student_id).first()
+
+    if not existing_student:
+        db.close()
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Student not found"
+        )
+
+    db.delete(existing_student)
+    db.commit()
+    db.close()
+
+    return {
+        "message": "Student deleted successfully"
+    }
+
+
 @app.get("/students/count")
 def get_student_count():
 

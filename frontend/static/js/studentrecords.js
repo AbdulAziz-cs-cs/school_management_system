@@ -86,12 +86,12 @@ function renderTable() {
             <td>${student.doj || ''}</td>
             <td class="action-cell">
                 <button type="button" class="edit-btn" data-id="${student.id}">Edit</button>
-                <button type="button" class="update-btn" data-id="${student.id}" disabled>Update</button>
+                <button type="button" class="delete-btn" data-id="${student.id}">Delete</button>
             </td>
         `;
 
         const editButton = row.querySelector(".edit-btn");
-        const updateButton = row.querySelector(".update-btn");
+        const deleteButton = row.querySelector(".delete-btn");
 
         editButton.addEventListener("click", function () {
             const rowId = Number(this.dataset.id);
@@ -114,10 +114,13 @@ function renderTable() {
                 <td><input type="date" value="${selectedStudent.doj || ''}" data-field="doj"></td>
                 <td class="action-cell">
                     <button type="button" class="update-btn" data-id="${selectedStudent.id}">Update</button>
+                    <button type="button" class="delete-btn" data-id="${selectedStudent.id}">Delete</button>
                 </td>
             `;
 
             const saveButton = row.querySelector(".update-btn");
+            const deleteRowButton = row.querySelector(".delete-btn");
+
             saveButton.addEventListener("click", async function () {
                 const updatedStudent = {
                     adm_no: Number(row.querySelector('[data-field="adm_no"]').value),
@@ -152,10 +155,49 @@ function renderTable() {
                     alert(error.message);
                 }
             });
+
+            deleteRowButton.addEventListener("click", async function () {
+                const confirmDelete = confirm("Are you sure you want to delete this student?");
+                if (!confirmDelete) return;
+
+                try {
+                    const response = await fetch(`/students/${rowId}`, {
+                        method: "DELETE"
+                    });
+
+                    if (!response.ok) {
+                        const error = await response.json();
+                        throw new Error(error.detail || "Failed to delete student");
+                    }
+
+                    await loadStudents();
+                    alert("Student deleted successfully");
+                } catch (error) {
+                    alert(error.message);
+                }
+            });
         });
 
-        updateButton.addEventListener("click", function () {
-            alert("Please use the Edit button to update this student.");
+        deleteButton.addEventListener("click", async function () {
+            const rowId = Number(this.dataset.id);
+            const confirmDelete = confirm("Are you sure you want to delete this student?");
+            if (!confirmDelete) return;
+
+            try {
+                const response = await fetch(`/students/${rowId}`, {
+                    method: "DELETE"
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.detail || "Failed to delete student");
+                }
+
+                await loadStudents();
+                alert("Student deleted successfully");
+            } catch (error) {
+                alert(error.message);
+            }
         });
 
         table.appendChild(row);
