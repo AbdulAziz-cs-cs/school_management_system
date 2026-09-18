@@ -38,6 +38,37 @@ th {
     color: maroon;
 }
 
+.action-cell {
+    white-space: nowrap;
+}
+
+.action-cell button {
+    width: 80px;
+    height: 32px;
+    margin: 2px;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.action-cell .update-btn {
+    background-color: #0d6efd;
+}
+
+.action-cell .update-btn:disabled {
+    background-color: #9aa5b1;
+    cursor: not-allowed;
+}
+
+.action-cell input,
+.action-cell select {
+    width: 100%;
+    min-width: 110px;
+    height: 32px;
+    padding: 5px 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
 /* ================= INPUTS & BUTTONS DESKTOP ================= */
 input {
     color: black;
@@ -127,7 +158,6 @@ button:hover {
         padding: 8px;
     }
 
-    /* Stack inputs neatly into a responsive vertical form */
     .input-row {
         flex-direction: column;
         align-items: stretch;
@@ -140,7 +170,7 @@ button:hover {
     .date-input input,
     button {
         width: 100% !important;
-        height: 40px; /* Slightly taller for easy finger tapping */
+        height: 40px;
         margin: 0;
     }
 
@@ -149,7 +179,6 @@ button:hover {
         font-size: 15px;
     }
 
-    /* Enables horizontal swipe for the table so columns stay readable */
     .table-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -157,7 +186,7 @@ button:hover {
     }
 
     table {
-        min-width: 650px; /* Prevents text crowding on small phones */
+        min-width: 650px;
     }
 
     th, td {

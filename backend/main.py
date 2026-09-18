@@ -181,6 +181,15 @@ class StudentData(BaseModel):
     adm_no: int
     gender: str 
 
+
+class StudentUpdateData(BaseModel):
+    name: str
+    father_name: str
+    dob: str
+    doj: str
+    adm_no: int
+    gender: str
+
 # --------------------------------------------------
 # ADD STUDENT API
 # --------------------------------------------------
@@ -242,6 +251,45 @@ def get_students():
     db.close()
 
     return result
+
+
+@app.put("/students/{student_id}")
+def update_student(student_id: int, student: StudentUpdateData):
+
+    db = SessionLocal()
+
+    existing_student = db.query(Student).filter(Student.id == student_id).first()
+
+    if not existing_student:
+        db.close()
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Student not found"
+        )
+
+    existing_student.name = student.name
+    existing_student.father_name = student.father_name
+    existing_student.dob = student.dob
+    existing_student.doj = student.doj
+    existing_student.adm_no = student.adm_no
+    existing_student.gender = student.gender
+
+    db.commit()
+    db.refresh(existing_student)
+    db.close()
+
+    return {
+        "message": "Student updated successfully",
+        "student": {
+            "id": existing_student.id,
+            "adm_no": existing_student.adm_no,
+            "name": existing_student.name,
+            "father_name": existing_student.father_name,
+            "dob": existing_student.dob,
+            "doj": existing_student.doj,
+            "gender": existing_student.gender
+        }
+    }
 
 
 @app.get("/students/count")
