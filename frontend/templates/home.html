@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title> i i i</title>
-    
-    <!-- AUTH CHECK: Blocks unauthenticated users before page renders -->
+    <title>School Management Dashboard</title>
+
     <script>
         if (localStorage.getItem("isLoggedIn") !== "true") {
             window.location.href = "/";
@@ -15,41 +14,134 @@
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
 <body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">S</div>
+                <div>
+                    <p class="brand-label">School</p>
+                    <h2>Admin Portal</h2>
+                </div>
+            </div>
 
-    <div class="layout">
-        <main class="main">
-            <h1> i i i</h1>
-            <hr class="line1">
-
-            <div class="dashboard">
-                <button class="menu-item" id="stdrecords" type="button">
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <button class="nav-item active" id="stdrecords" type="button">
+                    <span class="nav-icon">📚</span>
                     Students Records
                 </button>
 
-                <button class="menu-item" id="certificatecreation" type="button">
+                <button class="nav-item" id="certificatecreation" type="button">
+                    <span class="nav-icon">📝</span>
                     Create Certificate
                 </button>
 
-                <button class="menu-item" id="history" type="button">
+                <button class="nav-item" id="history" type="button">
+                    <span class="nav-icon">📜</span>
                     Certification History
                 </button>
 
-                <button class="menu-item" id="signout" type="button">
+                <button class="nav-item danger" id="signout" type="button">
+                    <span class="nav-icon">🚪</span>
                     Sign Out
                 </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Academic Year</p>
+                <strong>2026 / 2027</strong>
             </div>
+        </aside>
+
+        <main class="main-panel">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Overview</p>
+                    <h1>School Management Dashboard</h1>
+                </div>
+
+                <div class="user-badge">
+                    <span class="user-avatar">A</span>
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+            </header>
+
+            <section class="hero-card">
+                <div>
+                    <p class="eyebrow accent">Welcome back</p>
+                    <h2>Manage students, certificates, and academic records with confidence.</h2>
+                </div>
+
+                <button class="primary-btn" id="certificatecreation-secondary" type="button">Create Certificate</button>
+            </section>
+
+            <section class="records-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">Live data</p>
+                        <h3>Student Records</h3>
+                    </div>
+
+                    <button class="primary-btn ghost" id="view-students-btn" type="button">Open Records</button>
+                </div>
+
+                <div class="records-summary">
+                    <button class="summary-card record-card" type="button" data-link="/students-page">
+                        <span class="stat-label">Total Students</span>
+                        <strong id="student-count">Loading...</strong>
+                        <small>Updated from the database</small>
+                    </button>
+                </div>
+            </section>
         </main>
     </div>
 
     <script src="/static/js/home.js"></script>
 
-    <!-- LOGOUT HANDLER -->
     <script>
         document.getElementById("signout")?.addEventListener("click", () => {
             localStorage.removeItem("isLoggedIn");
             localStorage.removeItem("authToken");
             window.location.href = "/";
         });
+
+        const secondaryButton = document.getElementById("certificatecreation-secondary");
+        if (secondaryButton) {
+            secondaryButton.addEventListener("click", () => {
+                window.location.href = "/certificate";
+            });
+        }
+
+        const studentCountEl = document.getElementById("student-count");
+
+        async function loadStudentSummary() {
+            try {
+                const response = await fetch("/students");
+                if (!response.ok) {
+                    throw new Error("Failed to load student data");
+                }
+
+                const students = await response.json();
+                studentCountEl.textContent = students.length;
+            } catch (error) {
+                studentCountEl.textContent = "0";
+                console.error(error);
+            }
+        }
+
+        document.querySelectorAll(".record-card").forEach((card) => {
+            card.addEventListener("click", () => {
+                window.location.href = card.dataset.link;
+            });
+        });
+
+        document.getElementById("view-students-btn")?.addEventListener("click", () => {
+            window.location.href = "/students-page";
+        });
+
+        loadStudentSummary();
     </script>
 </body>
 </html>
