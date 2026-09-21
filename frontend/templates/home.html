@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
 <body>
-    <div class="app-shell">
+    <div class="app-shell" id="app-shell">
+        <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
         <aside class="sidebar">
             <div class="brand">
                 <div class="brand-mark">S</div>
@@ -54,6 +56,10 @@
 
         <main class="main-panel">
             <header class="topbar">
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu">
+                    ☰
+                </button>
+
                 <div>
                     <p class="eyebrow">Overview</p>
                     <h1>School Management Dashboard</h1>
@@ -115,6 +121,25 @@
         }
 
         const studentCountEl = document.getElementById("student-count");
+        const appShell = document.getElementById("app-shell");
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileBackdrop = document.getElementById("mobile-backdrop");
+
+        function toggleSidebar() {
+            if (!appShell) return;
+            appShell.classList.toggle("sidebar-open");
+        }
+
+        menuToggle?.addEventListener("click", toggleSidebar);
+        mobileBackdrop?.addEventListener("click", toggleSidebar);
+
+        document.querySelectorAll(".nav-item").forEach((item) => {
+            item.addEventListener("click", () => {
+                if (window.innerWidth <= 640) {
+                    appShell.classList.remove("sidebar-open");
+                }
+            });
+        });
 
         async function loadStudentSummary() {
             try {
